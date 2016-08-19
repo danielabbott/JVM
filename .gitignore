@@ -1,0 +1,7 @@
+*.constants.txt
+*.bytecode
+*.machinecode
+*.vcxproj.user
+*.class
+*.o
+Debug
