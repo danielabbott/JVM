@@ -358,10 +358,19 @@ uint8_t * convert_bytecode(Method * method)
 			break;
 		}
 
+		case 0x2e: /* iaload */
+		case 0x32: /* aaload */
 		case 0x34: { /* caload */
-			// mov eax, caload
-			data_offset = add_byte(0xb8);
-			add_dword(caload);
+			if (op <= 0x32) {
+				// mov eax, iaload
+				data_offset = add_byte(0xb8);
+				add_dword(iaload);
+			}
+			else if (op == 0x34) {
+				// mov eax, caload
+				data_offset = add_byte(0xb8);
+				add_dword(caload);
+			}
 
 			// call eax
 			data_offset = add_byte(0xff);
@@ -459,9 +468,9 @@ uint8_t * convert_bytecode(Method * method)
 			break;
 		}
 		case 0x53: { /* aastore Store into reference array */
-			// mov eax, aastore
+			// mov eax, iastore
 			data_offset = add_byte(0xb8);
-			add_dword(aastore);
+			add_dword(iastore);
 
 			// call eax
 			data_offset = add_byte(0xff);

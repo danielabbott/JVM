@@ -113,14 +113,26 @@ unsigned short caload(int index, JArrayInstance * jarray)
 
 void iastore(int32_t c, int index, JArrayInstance * jarray)
 {
-	if (jarray->atype != 10 || index < 0 || index >= jarray->size) {
-		fprintf(stderr, "iastore failed\n");
+	if ((jarray->atype != 10 && jarray->atype != 6 && jarray->atype > 3) || index < 0 || index >= jarray->size) {
+		fprintf(stderr, "a/i/fastore failed\n");
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32)
 		system("PAUSE");
 #endif
 		exit(1);
 	}
 	jarray->data_i[index] = c;
+}
+
+signed int iaload(int index, JArrayInstance * jarray)
+{
+	if ((jarray->atype != 10 && jarray->atype != 6 && jarray->atype > 3) || index < 0 || index >= jarray->size) {
+		fprintf(stderr, "a/i/faload failed\n");
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32)
+		system("PAUSE");
+#endif
+		exit(1);
+	}
+	return jarray->data_i[index];
 }
 
 void bastore(int8_t c, int index, JArrayInstance * jarray)

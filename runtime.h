@@ -65,8 +65,8 @@ JArrayInstance * new_array(char atype, int size);
 void castore(uint16_t c, int index, JArrayInstance * jarray);
 void iastore(int32_t c, int index, JArrayInstance * jarray);
 void bastore(int8_t c, int index, JArrayInstance * jarray);
-void aastore(void * c, int index, JArrayInstance * jarray);
 
 unsigned short caload(int index, JArrayInstance * jarray);
+signed int iaload(int index, JArrayInstance * jarray);
 
 #endif
