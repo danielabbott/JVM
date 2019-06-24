@@ -700,7 +700,7 @@ Field * get_field(JavaClass * jclass, int index)
 	char * s = java_class_utf8_to_c_string(&jclass->loaded_data[classNameOffset + 1]);
 	JavaClass * c = get_class(s);
 	if (!c) {
-		int len = get_short(c->loaded_data, classNameOffset + 1);
+		int len = get_short(jclass->loaded_data, classNameOffset + 1);
 		char * s1 = malloc(len + 6 + 1);
 		memcpy(s1, s, len);
 		memcpy(&s1[len], ".class", 7);

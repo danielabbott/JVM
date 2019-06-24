@@ -9,11 +9,11 @@ all: $(SOURCES) $(EXECUTABLE) Test.class
 
 Test.class: Test.java
 	javac Test.java
-    
+
 $(EXECUTABLE): $(OBJECTS) 
 	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
 
-.cpp.o:
+.c.o:
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:
